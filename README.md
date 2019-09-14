@@ -174,3 +174,21 @@ The source code is released under [GPLv3](http://www.gnu.org/licenses/) license.
 We are still working on improving the code reliability. For any technical issues, please contact Tong Qin <qintonguavATgmail.com>.
 
 For commercial inquiries, please contact Shaojie Shen <eeshaojieATust.hk>.
+
+
+## ##########################################################################
+2019.08.06
+## 4. KITTI Example
+### 4.1 KITTI Odometry (Stereo)
+```
+    roslaunch vins vins_rviz.launch
+    (optional) rosrun loop_fusion loop_fusion_node /home/whu/slam_ws/src/VINS-Fusion/config/kitti_odom/kitti_config00-02.yaml
+    rosrun vins kitti_odom_test '/home/whu/slam_ws/src/VINS-Fusion/config/kitti_odom/kitti_config00-02.yaml' '/media/whu/HD_CHEN_2T/02data/KITTI_odometry/dataset/sequences/00' 
+
+Debug 的两种方式：
+1）https://blog.csdn.net/itfanr/article/details/83573383
+如果你用roslaunch，在你的launch文件里，要debug的node那行加上
+launch-prefix=“xterm -e gdb --args”
+如果你用rosrun，直接在调用的时候加上gdb的参数：
+rosrun --prefix ‘gdb -ex run --args’ [package_name] [node_name]
+2） KDevelop 中设置Debug,并且可以旋转输出终端。
